@@ -1,0 +1,463 @@
+app:
+  description: ''
+  icon: scream
+  icon_background: '#E0F2FE'
+  mode: advanced-chat
+  name: DeepSeek-R1 WebSearch Example
+  use_icon_as_answer_icon: false
+kind: app
+version: 0.1.5
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: answer
+      id: 1739782938210-source-1739783103160-target
+      selected: false
+      source: '1739782938210'
+      sourceHandle: source
+      target: '1739783103160'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: start
+        targetType: code
+      id: 1739780489626-source-1740122268305-target
+      selected: false
+      source: '1739780489626'
+      sourceHandle: source
+      target: '1740122268305'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: tool
+        targetType: if-else
+      id: 1740123504077-source-1740040837503-target
+      selected: false
+      source: '1740123504077'
+      sourceHandle: source
+      target: '1740040837503'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: llm
+      id: 1740040837503-false-1739782938210-target
+      selected: false
+      source: '1740040837503'
+      sourceHandle: 'false'
+      target: '1739782938210'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: http-request
+      id: 1740040837503-efce333c-bba0-4b44-a398-9c8da8b7de30-1740251875487-target
+      selected: false
+      source: '1740040837503'
+      sourceHandle: efce333c-bba0-4b44-a398-9c8da8b7de30
+      target: '1740251875487'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: tool
+      id: 1740122268305-source-1740123504077-target
+      source: '1740122268305'
+      sourceHandle: source
+      target: '1740123504077'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: http-request
+        targetType: code
+      id: 1740251875487-source-1740253238631-target
+      source: '1740251875487'
+      sourceHandle: source
+      target: '1740253238631'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: answer
+      id: 1740253238631-source-1740253459250-target
+      source: '1740253238631'
+      sourceHandle: source
+      target: '1740253459250'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 开始
+        type: start
+        variables: []
+      height: 54
+      id: '1739780489626'
+      position:
+        x: -583.3382947746634
+        y: 282
+      positionAbsolute:
+        x: -583.3382947746634
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: DeepSeek-R1
+          provider: volcengine_maas
+        prompt_template:
+        - id: 0269bbad-eac8-43c7-bc12-6b3ecb8aafd2
+          role: system
+          text: '你是群聊的一个成员，大家可能会叫你墨缇斯、大莫老师、小莫、Mortis等。不需要过多夸张的角色扮演，群友也知道你是DeepSeek，保持正常风格交流即可，请以群友的身份和大家聊天。
+
+            基于微信群聊的聊天，因此回答中不要带有markdown中的格式渲染符号，例如用**表示加粗等。
+
+            当前时间：{{#1740123504077.text#}}
+
+            {{#1740122268305.query_system#}}'
+        - id: a78b53c1-8f89-4388-ba10-3e72683aef87
+          role: user
+          text: '{{#1740122268305.query_user#}}'
+        selected: false
+        title: 问题思考2
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 98
+      id: '1739782938210'
+      position:
+        x: 576.0217506639244
+        y: 407.33374788858896
+      positionAbsolute:
+        x: 576.0217506639244
+        y: 407.33374788858896
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#1739782938210.text#}}'
+        desc: ''
+        selected: false
+        title: 直接回复 2
+        type: answer
+        variables: []
+      height: 103
+      id: '1739783103160'
+      position:
+        x: 847.396690789094
+        y: 407.33374788858896
+      positionAbsolute:
+        x: 847.396690789094
+        y: 407.33374788858896
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        cases:
+        - case_id: efce333c-bba0-4b44-a398-9c8da8b7de30
+          conditions:
+          - comparison_operator: contains
+            id: a8a193cb-2b2f-4e0e-a551-eeb88f0a97c6
+            value: 搜索
+            varType: string
+            variable_selector:
+            - '1740122268305'
+            - query_user
+          id: efce333c-bba0-4b44-a398-9c8da8b7de30
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: 条件分支
+        type: if-else
+      height: 126
+      id: '1740040837503'
+      position:
+        x: 260.6792909543682
+        y: 282
+      positionAbsolute:
+        x: 260.6792909543682
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "import re\n\ndef main(query: str) -> dict:\n    # 按最后一次出现 \"USER: \\\
+          n\\n\" 切分\n    parts = query.rsplit('USER: \\n\\n', 1)\n    if len(parts)\
+          \ == 2:\n        query_system = parts[0].strip()\n        query_user = parts[1].strip()\n\
+          \        # 如果需要替换系统提示中的某些文字，可自行调整，比如：\n        query_system = query_system.replace('You\
+          \ are now in a chatroom. The chat history is as follows', '群聊的历史纪录如下')\n\
+          \        return {\n            'query_system': query_system,\n         \
+          \   'query_user': query_user\n        }\n    return {\n        'query_system':\
+          \ '',\n        'query_user': query\n    }\n"
+        code_language: python3
+        desc: ''
+        outputs:
+          query_system:
+            children: null
+            type: string
+          query_user:
+            children: null
+            type: string
+        selected: false
+        title: 代码执行
+        type: code
+        variables:
+        - value_selector:
+          - sys
+          - query
+          variable: query
+      height: 54
+      id: '1740122268305'
+      position:
+        x: -296.66668349320577
+        y: 282
+      positionAbsolute:
+        x: -296.66668349320577
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        provider_id: time
+        provider_name: time
+        provider_type: builtin
+        selected: false
+        title: 获取当前时间
+        tool_configurations:
+          format: '%Y-%m-%d %H:%M:%S'
+          timezone: Asia/Shanghai
+        tool_label: 获取当前时间
+        tool_name: current_time
+        tool_parameters: {}
+        type: tool
+      height: 116
+      id: '1740123504077'
+      position:
+        x: -13.5516833677749
+        y: 282
+      positionAbsolute:
+        x: -13.5516833677749
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        authorization:
+          config: null
+          type: no-auth
+        body:
+          data:
+          - id: key-value-525
+            key: ''
+            type: text
+            value: "{\n  \"model\": \"bot-20250223031134-xxx\",\n  \"stream\": false,\n\
+              \  \"max_tokens\": 1024,\n  \"messages\": [\n    {\n      \"role\":\
+              \ \"system\",\n      \"content\": \"你是群聊的一个成员，大家可能会叫你墨缇丝、大莫老师、小莫、Mortis等。不需要过多夸张的角色扮演，群友也知道你是DeepSeek，保持正常风格交流即可，请以群友的身份和大家聊天。\\\
+              \\n基于微信群聊的聊天，因此回答中不要带有markdown中的格式渲染符号，例如用**表示加粗等。适当地用换行或者两个换行进行分段，更加美观整齐\\\
+              \\n当前时间：{{#1740123504077.text#}}\\\\n{{#1740122268305.query_system#}}\"\
+              \n    },\n    {\n      \"role\": \"user\",\n      \"content\": \"{{#1740122268305.query_user#}}\"\
+              \n    }\n  ]\n}"
+          type: json
+        desc: ''
+        headers: 'Authorization:Bearer ecxxx
+
+          Content-Type:application/json'
+        method: post
+        params: ''
+        retry_config:
+          max_retries: 3
+          retry_enabled: false
+          retry_interval: 100
+        selected: false
+        timeout:
+          max_connect_timeout: 0
+          max_read_timeout: 0
+          max_write_timeout: 0
+        title: HTTP 请求
+        type: http-request
+        url: https://ark.cn-beijing.volces.com/api/v3/bots/chat/completions
+        variables: []
+      height: 126
+      id: '1740251875487'
+      position:
+        x: 576.0217506639244
+        y: 237.2679714205205
+      positionAbsolute:
+        x: 576.0217506639244
+        y: 237.2679714205205
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "import json\n\n\ndef main(response: str) -> dict:\n    body_dict =\
+          \ json.loads(response)\n    choices = body_dict[\"choices\"]\n    message\
+          \ = choices[0][\"message\"]\n    content = message[\"content\"]\n    reasoning_content\
+          \ = message[\"reasoning_content\"]\n    return {\n        \"reasoning\"\
+          : reasoning_content,\n        \"answer\": content\n    }"
+        code_language: python3
+        desc: ''
+        outputs:
+          answer:
+            children: null
+            type: string
+          reasoning:
+            children: null
+            type: string
+        selected: false
+        title: 代码执行 2
+        type: code
+        variables:
+        - value_selector:
+          - '1740251875487'
+          - body
+          variable: response
+      height: 54
+      id: '1740253238631'
+      position:
+        x: 847.396690789094
+        y: 237.2679714205205
+      positionAbsolute:
+        x: 847.396690789094
+        y: 237.2679714205205
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#1740253238631.answer#}}'
+        desc: ''
+        selected: false
+        title: 直接回复
+        type: answer
+        variables: []
+      height: 103
+      id: '1740253459250'
+      position:
+        x: 1122.5903119670177
+        y: 237.2679714205205
+      positionAbsolute:
+        x: 1122.5903119670177
+        y: 237.2679714205205
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        author: TJJ
+        desc: ''
+        height: 104
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"Authorization字段填入自己的API
+          Key","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"JSON的model字段填入自己的应用ID","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 254
+      height: 104
+      id: '1740454940285'
+      position:
+        x: 576.0217506639244
+        y: 111.99914483566295
+      positionAbsolute:
+        x: 576.0217506639244
+        y: 111.99914483566295
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 254
+    viewport:
+      x: -310.9566749379733
+      y: -40.07495640494824
+      zoom: 1.4401489013674942
