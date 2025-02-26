@@ -1,7 +1,7 @@
 # 实现带联网搜索能力的墨缇丝微信群聊助手 DeepSeek+AstrBot+Dify
 
 开始之前先看看效果
-![](attachments\Pasted image 20250224111805.png)
+![](attachments/Pasted%20image%2020250224111805.png)
 
 ## 一、背景
 
@@ -52,12 +52,12 @@
 我自己用的是家里的极摩客 K1 迷你电脑
 平时用来挂 MAA，装了一个 Docker Desktop 部署服务
 
-![](attachments\Pasted image 20250224113413.png)
+![](attachments/Pasted%20image%2020250224113413.png)
 ## 三、注册火山方舟服务
 
 #### 3.1 账号注册
 进入火山引擎官网并注册登录 https://www.volcengine.com/
-![](attachments\Pasted image 20250224114358.png)
+![](attachments/Pasted%20image%2020250224114358.png)
 顶部菜单-大模型-火山方舟 跳转页面
 进入火山方舟控制台 https://console.volcengine.com/ark
 
@@ -67,18 +67,18 @@
 需要用到的大模型：
 - DeepSeek-R1：核心推理模型
 - Doubao-1.5-lite-32k：用于工作流意图判断、Dify 代码生成等
-![](attachments\Pasted image 20250224114907.png)
+![](attachments/Pasted%20image%2020250224114907.png)
 
 【API Key 管理】
 创建一个 API Key
-![](attachments\Pasted image 20250224115211.png)
+![](attachments/Pasted%20image%2020250224115211.png)
 
 【在线推理-自定义推理接入点】
 每个模型创建一个推理接入点
-![](attachments\Pasted image 20250224115400.png)
+![](attachments/Pasted%20image%2020250224115400.png)
 接入点名称自定义
 建议把模型名称写进接入点名称中，便于区分
-![](attachments\Pasted image 20250224115544.png)
+![](attachments/Pasted%20image%2020250224115544.png)
 在 【自定义接入点-API调用】 部分可以看到 OpenAI 格式的调用方式
 - 接入点 base_url：https://ark.cn-beijing.volces.com/api/v3
 - API Key：ec67d64a-xxxx-xxxx-xxxx-xxx
@@ -92,7 +92,7 @@
 通过当前微信的手机号辅助注册
 
 如果手机系统支持多开微信最好用第二个微信登录小号
-![](attachments\Pasted image 20250224141151.png)
+![](attachments/Pasted%20image%2020250224141151.png)
 ## 五、部署 AstrBot+Gewechat
 
 项目地址
@@ -132,11 +132,11 @@ PS C:\Docker\astrbot> docker run -itd -v gewechat:/root/temp -p 2531:2531 -p 253
 
 添加消息平台
 
-![](attachments\Pasted image 20250225101326.png)
+![](attachments/Pasted%20image%2020250225101326.png)
 
 添加完之后重启 AstrBot，扫码登录微信
 
-![](attachments\Pasted image 20250225102731.png)
+![](attachments/Pasted%20image%2020250225102731.png)
 
 如果遇到“创建设备失败，获取二维码失败”的报错，关掉代理之后再重启 AstrBot
 https://github.com/Soulter/AstrBot/issues/398
@@ -152,11 +152,11 @@ https://github.com/Soulter/AstrBot/issues/398
 ```
 在【配置】中开启白名单，然后保存重启 AstrBot
 
-![](attachments\Pasted image 20250225103306.png)
+![](attachments/Pasted%20image%2020250225103306.png)
 
 再次测试命令
 
-![](attachments\Pasted image 20250225103006.png)
+![](attachments/Pasted%20image%2020250225103006.png)
 #### 5.3 配置 AstrBot+LLM
 
 添加大模型服务商
@@ -169,12 +169,12 @@ https://github.com/Soulter/AstrBot/issues/398
 
 这里注意【文本生成模型】填写的是接入点 ID 而不是 doubao-1.5-lite-32k
 
-![](attachments\Pasted image 20250225103528.png)
+![](attachments/Pasted%20image%2020250225103528.png)
 
 可以在【配置】中设置
 例如人格情景、联网插件、群聊上下文记录等
 
-![](attachments\Pasted image 20250225104058.png)
+![](attachments/Pasted%20image%2020250225104058.png)
 
 然后保存并重启 AstrBot，在微信进行测试
 用 /persona 切换人格，/provider 切换模型，/new 和 /switch 和 /ls 管理对话等
@@ -183,7 +183,7 @@ https://github.com/Soulter/AstrBot/issues/398
 在群聊中把墨缇丝拉进群然后 @墨缇丝 进行对话，也可以在配置中加上自定义的唤醒前缀词
 在微信中手动 @ 和复制消息的 @ 是不同的
 
-![](attachments\Pasted image 20250225103734.png)
+![](attachments/Pasted%20image%2020250225103734.png)
 
 ### 六、部署 Dify+new-api
 
@@ -207,7 +207,7 @@ docker compose up -d
 如果有问题就检查 docker logs
 一般是 redis 容器和 db 容器启动失败一直 restarting，通过 docker-compose.yml 中修改容器 priviledged 等方式解决
 
-![](attachments\Pasted image 20250225110243.png)
+![](attachments/Pasted%20image%2020250225110243.png)
 
 new-api 通过 Docker 部署 https://github.com/Calcium-Ion/new-api?tab=readme-ov-file#%E7%9B%B4%E6%8E%A5%E4%BD%BF%E7%94%A8-docker-%E9%95%9C%E5%83%8F
 ```bash
@@ -217,31 +217,31 @@ docker run --name new-api -d --restart always -p 3000:3000 -e TZ=Asia/Shanghai -
 
 启动之后首次登录 Dify http://localhost/install 设置管理员
 
-![](attachments\Pasted image 20250225111050.png)
+![](attachments/Pasted%20image%2020250225111050.png)
 设置完之后登录主页【右上角-设置-模型供应商】，添加火山模型
 模型名称自定义，【鉴权方式】选择 API Key
 
-![](attachments\Pasted image 20250225111250.png)
+![](attachments/Pasted%20image%2020250225111250.png)
 
 #### 6.3 创建初始对话流
 
 在【工作室-创建空白应用】，推荐选择 Chatflow
 目前 new-api 支持聊天助手、文本生成、Chatflow、工作流，好像不支持 Agent
 
-![](attachments\Pasted image 20250225111441.png)
+![](attachments/Pasted%20image%2020250225111441.png)
 
 创建完了之后是一个简单的对话，右上角发布即可
 
-![](attachments\Pasted image 20250225111645.png)
+![](attachments/Pasted%20image%2020250225111645.png)
 
 可以先在【预览】中进行本地测试，确认模型跑通
 
-![](attachments\Pasted image 20250225111745.png)
+![](attachments/Pasted%20image%2020250225111745.png)
 
 跑通之后在【访问API】部分，创建 API Key：app-xxx
 在外部调用 Dify 不同的工作流，是通过 API Key 进行区分的
 
-![](attachments\Pasted image 20250225111831.png)
+![](attachments/Pasted%20image%2020250225111831.png)
 #### 6.4 配置 new-api+AstrBot
 
 完成 Dify 初始对话流的创建之后
@@ -253,7 +253,7 @@ docker run --name new-api -d --restart always -p 3000:3000 -e TZ=Asia/Shanghai -
 - 密钥是前面在 Dify 对话流中创建的 API Key
 - 模型建议清空所有模型列表，然后填入一个自定义的名称
 
-![](attachments\Pasted image 20250225112618.png)
+![](attachments/Pasted%20image%2020250225112618.png)
 
 在【令牌-添加令牌】新建一个访问权限
 - 可以设置永不过期+无限额度
@@ -261,7 +261,7 @@ docker run --name new-api -d --restart always -p 3000:3000 -e TZ=Asia/Shanghai -
 
 注意，一个 Dify 工作流对应一个渠道，而令牌只创建一个即可
 
-![](attachments\Pasted image 20250225112907.png)
+![](attachments/Pasted%20image%2020250225112907.png)
 
 回到 AstrBot，添加 new-api 的访问方式
 - API Key 复制刚才 new-api 的令牌
@@ -269,7 +269,7 @@ docker run --name new-api -d --restart always -p 3000:3000 -e TZ=Asia/Shanghai -
 - 模型名称对应 new-api 渠道里填入的模型名称
 完成配置后用 /provider 在聊天里切换模型
 
-![](attachments\Pasted image 20250225113154.png)
+![](attachments/Pasted%20image%2020250225113154.png)
 
 ## 七、设计 Dify 对话流
 
@@ -279,7 +279,7 @@ docker run --name new-api -d --restart always -p 3000:3000 -e TZ=Asia/Shanghai -
 如果不想看构建对话流的过程可以直接抄作业
 保存 dsl 文件直接导入到 Dify 即可
 DSL 文件太长了，我后面在评论区贴出来
-![](attachments\Pasted image 20250225114418.png)
+![](attachments/Pasted%20image%2020250225114418.png)
 #### 7.1 输入处理
 
 AstrBot 支持群聊上下文，需要 OpenAI 格式的接口才会启用，默认的 Dify 工作流不启用
@@ -298,8 +298,8 @@ AstrBot 支持群聊上下文，需要 OpenAI 格式的接口才会启用，默�
   "sys.workflow_run_id": "6852c677-19b6-4367-9b1a-5501d1ec1a63"
 }
 ```
-![](attachments\Pasted image 20250225162558.png)
-![](attachments\Pasted image 20250225162834.png)
+![](attachments/Pasted%20image%2020250225162558.png)
+![](attachments/Pasted%20image%2020250225162834.png)
 
 整理下来大概是这样的内容
 ```python
@@ -338,7 +338,7 @@ USER:
 也可以用 doubao-lite 进行问题分类器意图判断
 
 同时挂一个获取当前时间的工具，便于搜索查询
-![](attachments\Pasted image 20250225163805.png)
+![](attachments/Pasted%20image%2020250225163805.png)
 代码执行部分如下
 ```python
 import re
@@ -377,7 +377,7 @@ DeepSeek是知道Ave Mujica的，但是不知道墨缇丝
 当前时间：{{当前时间}}
 {{query_system}}
 ```
-![](attachments\Pasted image 20250225164356.png)
+![](attachments/Pasted%20image%2020250225164356.png)
 #### 7.3 开通火山引擎联网搜索
 
 在尝试火山引擎之前，我尝试过 Jina 和 Bing
@@ -395,12 +395,12 @@ Bing 要 VISA 卡，每天有免费额度
 暂时使用曲线救国的方式
 【火山方舟-我的应用-创建应用-零代码模式】
 
-![](attachments\Pasted image 20250225165323.png)
+![](attachments/Pasted%20image%2020250225165323.png)
 
 创建一个空白的带联网插件的应用即可，然后发布
 不需要提示词，由 Dify 提供提示词
 
-![](attachments\Pasted image 20250225165346.png)
+![](attachments/Pasted%20image%2020250225165346.png)
 #### 7.4 Dify 接入火山联网应用
 
 因为火山应用需要用应用 ID `bot-xxx` 代替模型 ID `ep-xxx`
@@ -429,7 +429,7 @@ Body：选择 JSON 方式，注意非流式推理并设置最大输出长度
   ]
 }
 ```
-![](attachments\Pasted image 20250225165834.png)
+![](attachments/Pasted%20image%2020250225165834.png)
 
 考虑到联网搜索的思维链会很长，微信有最大消息长度限制
 因此联网搜索部分不输出思维链，只输出结果
@@ -455,10 +455,10 @@ def main(response: str) -> dict:
 看看 AstrBot 对话上下文轮次设置为 100 时的 Token 消耗
 多的时候一天消耗大概 200k，不到 0.8 元
 
-![](attachments\Pasted image 20250225170440.png)
+![](attachments/Pasted%20image%2020250225170440.png)
 
 联网搜索引用数量10+上下文轮次100 的时候，14 次调用消耗了 74k
-![](attachments\Pasted image 20250225170730.png)
+![](attachments/Pasted%20image%2020250225170730.png)
 建议是邀请群友注册火山方舟，一个人送30块，好友能送15块
 然后微信群聊上下文设置低一点
 以后可能会考虑加入长时记忆功能，让大模型定期总结聊天记录
